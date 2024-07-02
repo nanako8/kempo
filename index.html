@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | {{{ PRODUCT_NAME }}}</title>
+    <title>Unity WebGL Player | nihonkempo</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}}></canvas>
+      <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">{{{ PRODUCT_NAME }}}</div>
+        <div id="unity-build-title">nihonkempo</div>
       </div>
     </div>
     <script>
@@ -65,8 +65,8 @@
 	        winHeight = winHeight - barHeight - barHeightMargin;
         }
         const winWidth = window.innerWidth;
-        const appWidth = "{{{ WIDTH }}}";
-        const appHeight = "{{{ HEIGHT }}}";
+        const appWidth = "960";
+        const appHeight = "600";
         const scale = Math.min((winWidth / appWidth), (winHeight / appHeight));
         const fixWidth = (appWidth * scale);
         const fixHeight = (appHeight * scale);
@@ -88,23 +88,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      var loaderUrl = buildUrl + "/portfolio.loader.js";
       var config = {
-        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
-        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
-#if USE_WASM
-        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
-#endif
-#if MEMORY_FILENAME
-        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
-#endif
-#if SYMBOLS_FILENAME
-        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
-#endif
+        dataUrl: buildUrl + "/portfolio.data.unityweb",
+        frameworkUrl: buildUrl + "/portfolio.framework.js.unityweb",
+        codeUrl: buildUrl + "/portfolio.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
-        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
-        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        companyName: "nanako",
+        productName: "nihonkempo",
+        productVersion: "0.1",
         showBanner: unityShowBanner,
       };
 
@@ -137,9 +129,6 @@
         
       }
 
-#if BACKGROUND_FILENAME
-      canvas.style.background = "url('" + buildUrl + "/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
-#endif
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
@@ -161,3 +150,4 @@
     </script>
   </body>
 </html>
+
